@@ -1,0 +1,11 @@
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: #ffffff;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
