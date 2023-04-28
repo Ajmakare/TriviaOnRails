@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import {CircleLoader} from 'react-spinners';
 import '../styles/Game.css';
 
 const Game = () => {
@@ -8,13 +10,23 @@ const Game = () => {
   const [feedback, setFeedback] = useState('');
   const [correct, setCorrect] = useState(3);
   const [score, setScore] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      const proxyURL = 'https://api.allorigins.win/raw?url=';
-      const response = await fetch(proxyURL + 'https://jservice.io/api/random?count=10');
-      const data = await response.json();
-      setQuestions(data);
+      setLoading(true);
+      try {
+        const response = await axios.get('https://jservice.io/api/random?count=10');
+        const data = response.data;
+        setQuestions(data);
+        console.log(data);
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+      } finally {
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000); 
+      }
     };
     fetchQuestions();
   }, []);
@@ -28,7 +40,6 @@ const Game = () => {
       setCorrect(2);
       setFeedback('Incorrect! The correct answer was: ' + questions[currentQuestionIndex].answer + '.'); 
     }
-
     setUserAnswer('');
   };
 
@@ -39,10 +50,11 @@ const Game = () => {
     setCorrect(3);
   };
 
-  if (questions.length === 0) {
-    return <div>Loading questions...</div>;
-  }
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+
+  if (loading) {
+    return <div className='loader-container'><CircleLoader color = 'rgba(197, 28, 28, 1)'/></div>;
+  }
 
   return (
     <div className="game-container">
@@ -83,8 +95,6 @@ const Game = () => {
           </button>
         ) : null}
         </div>
-
-
     </div>
   );
 };
