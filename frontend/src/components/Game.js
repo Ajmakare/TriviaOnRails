@@ -6,7 +6,7 @@ const Game = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
-  const [correct, setCorrect] = useState(0);
+  const [correct, setCorrect] = useState(3);
   const [score, setScore] = useState(0);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ const Game = () => {
       setCorrect(1);
       setScore((prevScore) => prevScore + 1);
     } else {
+      setCorrect(2);
       setFeedback('Incorrect! The correct answer was: ' + questions[currentQuestionIndex].answer + '.'); 
     }
 
@@ -35,7 +36,7 @@ const Game = () => {
     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
     setFeedback('');
     setUserAnswer(''); 
-    setCorrect(0);
+    setCorrect(3);
   };
 
   if (questions.length === 0) {
@@ -46,6 +47,14 @@ const Game = () => {
   return (
     <div className="game-container">
       <div className="question-container">
+      {correct === 1? (
+        <img src="/assets/thumbsup.png" height="110px" width="110px" />
+      ) : correct === 2 ? (
+        <img src="/assets/thumbsdown.webp" height="130px" width="130px" />
+      ) : correct === 3 ? (
+        <img src="/assets/thinking.png" height="135px" width="135px" />
+      ) : null}
+      {feedback && <p className="feedback-message">{feedback}</p>}
         <h2>QUESTION {currentQuestionIndex + 1}</h2>
         <p>{questions[currentQuestionIndex].question}</p>
       </div>
@@ -68,13 +77,13 @@ const Game = () => {
               Next Question
             </button>
           )}
-        {correct === 0 ? (
+        {correct === 0 || correct === 3 ? (
           <button style={{ marginLeft: '20px' }} className="next-question-button" onClick={handleSubmit}>
             Submit
           </button>
         ) : null}
         </div>
-        {feedback && <p className="feedback-message">{feedback}</p>}
+
 
     </div>
   );
