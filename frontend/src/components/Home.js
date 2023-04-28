@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/Home.css';
 
 const Home = () => {
   const handlePlayNowClick = () => {
@@ -6,12 +7,13 @@ const Home = () => {
   };
 
   return (
-    <main>
+    <div className="home-container">
       <h2>Welcome to Trivia on Rails!</h2>
-      <p>Test your knowledge with our collection of trivia questions.</p>
-      <button onClick={handlePlayNowClick}>Play Now</button>
-    </main>
+      <p>A state of the art trivia application built with Ruby on Rails and React</p>
+      <button style = {{margin:'auto'}} className="play-now-button" onClick={handlePlayNowClick}>Play Now</button>
+    </div>
   );
 };
+
 
 export default Home;
