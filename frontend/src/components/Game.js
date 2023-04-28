@@ -53,7 +53,7 @@ const Game = () => {
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
   if (loading) {
-    return <div className='loader-container'><CircleLoader color = 'rgba(197, 28, 28, 1)'/></div>;
+    return <div className='loader-container'><CircleLoader color = 'rgba(197, 28, 28, 1)' size = '200'/></div>;
   }
 
   return (
