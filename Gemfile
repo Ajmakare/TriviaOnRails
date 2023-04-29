@@ -6,7 +6,7 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '6.1.5.1'
 # Use postgres as the database for Active Record
-gem 'pg'
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -15,7 +15,9 @@ gem 'puma', '~> 5.0'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'sinatra'
+gem 'activerecord'
+gem 'sinatra-activerecord'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
