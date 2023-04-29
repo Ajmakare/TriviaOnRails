@@ -6,9 +6,10 @@ const Leaderboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('https://example.com/api/leaderboard');
+      const response = await fetch('http://127.0.0.1:4567/scores');
       const data = await response.json();
       setLeaderboardData(data);
+      console.log(data);
     };
     fetchData();
   }, []);

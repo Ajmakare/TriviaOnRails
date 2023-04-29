@@ -3,9 +3,17 @@ require 'sinatra'
 require 'json'
 require 'sinatra/activerecord'
 require_relative 'app/models/score'
+require 'rack/cors'
 
 # Database configuration
 set :database_file, 'config/database.yml'
+
+use Rack::Cors do
+  allow do
+    origins '*'
+    resource '*', headers: :any, methods: [:get, :post, :options]
+  end
+end
 
 # GET /scores - Retrieve all scores
 get '/scores' do
