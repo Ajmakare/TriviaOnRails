@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <h2>Welcome to Trivia on Rails!</h2>
-      <p>A state of the art trivia application built with Ruby on Rails and React</p>
+      <p>A state of the art (VERY difficult) trivia application built with Ruby on Rails and React</p>
       <button style = {{margin:'auto'}} className="play-now-button" onClick={handlePlayNowClick}>Play Now</button>
     </div>
   );

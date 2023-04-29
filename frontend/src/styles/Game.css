@@ -1,5 +1,7 @@
 body{
-    font-family:'Brush Script MT', cursive;
+    /* font-family:'Brush Script MT', cursive; */
+    /* background-image: url('./background.webp');
+    background-size: cover; */
 }
 
 .game-container {
