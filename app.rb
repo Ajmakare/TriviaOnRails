@@ -38,7 +38,7 @@ end
 post '/scores' do
   content_type :json
   data = JSON.parse(request.body.read)
-  score = Score.new(score: data['score'], user_id: data['user_id'], username: data['username'])
+  score = Score.new(score: data['score'], username: data['username'])
 
   if score.save
     score.to_json
@@ -56,7 +56,6 @@ put '/scores/:id' do
   if score
     data = JSON.parse(request.body.read)
     score.score = data['score'] if data['score']
-    score.user_id = data['user_id'] if data['user_id']
     score.username = data['username'] if data['username']
 
     if score.save
