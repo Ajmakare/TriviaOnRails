@@ -8,14 +8,15 @@ const Leaderboard = () => {
     const fetchData = async () => {
       const response = await fetch('http://127.0.0.1:4567/scores');
       const data = await response.json();
-      setLeaderboardData(data);
-      console.log(data);
+      const sortedData = data.sort((a, b) => b.score - a.score);
+      setLeaderboardData(sortedData);
+      console.log(sortedData);
     };
     fetchData();
   }, []);
 
   return (
-    <div className = 'leaderboard-container'>
+    <div className="leaderboard-container">
       <h2>GLOBAL LEADERBOARD</h2>
       <table>
         <thead>
@@ -27,7 +28,7 @@ const Leaderboard = () => {
         <tbody>
           {leaderboardData.map((entry, index) => (
             <tr key={index}>
-              <td>{entry.name}</td>
+              <td>{entry.username}</td>
               <td>{entry.score}/10</td>
             </tr>
           ))}

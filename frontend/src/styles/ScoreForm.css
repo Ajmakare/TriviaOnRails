@@ -1,0 +1,32 @@
+.score-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .score-form-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .submit-button{
+    margin: auto;
+    margin-top:25px;
+    display: block;
+    width: 200px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    background-color: #0066cc;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  

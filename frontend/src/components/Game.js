@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {CircleLoader} from 'react-spinners';
 import '../styles/Game.css';
+import { useNavigate } from 'react-router-dom';
 
 const Game = () => {
   const [questions, setQuestions] = useState([]);
@@ -11,6 +12,8 @@ const Game = () => {
   const [correct, setCorrect] = useState(3);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -69,6 +72,7 @@ const Game = () => {
       {feedback && <p className="feedback-message">{feedback}</p>}
         <h2>QUESTION {currentQuestionIndex + 1}</h2>
         <p>{questions[currentQuestionIndex].question}</p>
+        <p>CATEGORY: {questions[currentQuestionIndex].category.title}</p>
       </div>
       <div className="progress-meter">
       <div className="progress-bar" style={{ width: `${progress}%` }}></div>
@@ -94,6 +98,17 @@ const Game = () => {
             Submit
           </button>
         ) : null}
+        {currentQuestionIndex === questions.length - 1 && (
+          <button
+          style={{ marginLeft: '20px' }}
+          className="next-question-button"
+          onClick={() =>
+            navigate('/score-form', { state: { score: score } })
+          }
+        >
+          Finish
+        </button>
+        )}
         </div>
     </div>
   );
